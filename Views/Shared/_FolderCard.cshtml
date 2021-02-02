@@ -1,0 +1,29 @@
+@model FlashcardFolder
+
+<div class="card w-10">
+    <div class="card-body">
+        <h4 class="card-title">@Model.FolderName</h4>
+        <h6 class="card-subtitle mb-2 text-muted">@Model.Subject</h6>
+        <p class="card-text">
+            @Model.Description
+        </p>
+        <a asp-controller="Home"
+           asp-action="FolderDetails"
+           asp-route-Id="@Model.Id"
+           class="card-link">Open Folder</a>
+        <a href="#" class="card-link float-right text-danger" onclick="removeCardWarning('confirm-dialog-@Model.Id');" id="remove-button">Remove Folder</a>
+    </div>
+</div>
+
+<!--popup box to confirm removal of a folder, hidden by default, links are made using modelId to open one box at a time.-->
+<div id="confirm-dialog-@Model.Id" title="Remove folder" class="modal">
+    <div class="modal-content">
+        <p>Are you sure you want to delete the folder "@Model.FolderName"?</p>
+        <menu>
+            <button id="cancel" class="close" onclick="closeCardWarning('confirm-dialog-@Model.Id');">Cancel</button>
+            <a asp-controller="Home"
+               asp-action="RemoveFolder"
+               asp-route-Id="@Model.Id">Remove Folder</a>
+        </menu>
+    </div>
+</div>

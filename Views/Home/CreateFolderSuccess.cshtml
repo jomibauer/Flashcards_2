@@ -1,0 +1,9 @@
+@model FlashcardFolderInfoViewModel
+
+<h4 class="display-4">@Model.Name created successfully!</h4>
+<p>
+    <a asp-controller="Home" asp-action="FolderDetails" asp-route-Id="@Model.FlashcardFolderId">Go to my folder</a>
+    or
+    <a asp-controller="Flashcard" asp-action="AddCard" asp-route-flashcardFolderId="@Model.FlashcardFolderId">add some cards.</a>
+
+</p>

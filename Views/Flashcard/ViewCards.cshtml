@@ -1,0 +1,24 @@
+@model FlashcardsViewModel
+@section NavBack{
+    <partial name="_NavBack" model="new FlashcardFolderInfoViewModel{ FlashcardFolderId = Model.FlashcardFolderId  }" />
+}
+
+<h1 class="display-4">@Model.FolderName</h1>
+<h5 class="text-black-50">Flashcards</h5>
+
+<div class="align-items-center w-25">
+    <p class="fade-out bg-success rounded pr-3 pl-3 text-center text-white">@ViewBag.UserMessage</p>
+</div>
+<div class="align-items-center w-25">
+    <p class="fade-out bg-danger rounded pr-3 pl-3 text-center text-white">@ViewBag.ErrorMessage</p>
+</div>
+
+<div class="row">
+    @foreach (var flashcard in Model.CurrentStack)
+    {
+
+        <div class="col-md-3 col-lg-3 col-sm-6 mr-1 mb-1 align-items-center" style="height:125px;">
+            <partial name="_FlashcardDetails" model="flashcard" />
+        </div>
+    }
+</div>

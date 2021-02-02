@@ -1,0 +1,36 @@
+@model FlashcardsViewModel
+
+@section NavBack{
+    <partial name="_NavBack" model="new FlashcardFolderInfoViewModel{ FlashcardFolderId = Model.FlashcardFolderId  }" />
+}
+
+<h1 class="display-4">@Model.FolderName</h1>
+<h4 class="text-black-50">Add a new card</h4>
+
+<div class="align-items-center w-25">
+    <p class="fade-out bg-success rounded pr-3 pl-3 text-center text-white">@ViewBag.UserMessage</p>
+</div>
+<div class="align-items-center w-25">
+    <p class="fade-out bg-danger rounded pr-3 pl-3 text-center text-white">@ViewBag.ErrorMessage</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <partial name="_AddCardPartial" model="new FlashcardViewModel { FlashcardFolderId = Model.FlashcardFolderId }" />
+    </div>
+
+    <div class="col-md-4 offset-1" style="height:50vh;">
+        <p>Cards in @Model.FolderName</p>
+        
+        <ul class="scrolling-list">
+
+            @foreach (var card in Model.CurrentStack)
+            {               
+                <li class="mb-2">
+                    <partial name="_FlashcardDetails" model="card" />
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>

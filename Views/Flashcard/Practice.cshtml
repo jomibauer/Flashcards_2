@@ -1,0 +1,33 @@
+@model FlashcardsViewModel
+@section NavBack{
+    <partial name="_NavBack" model="new FlashcardFolderInfoViewModel{ FlashcardFolderId = Model.FlashcardFolderId  }" />
+}
+<h1 class="display-4">@Model.FolderName</h1>
+
+<div class="carousel slide" data-ride="carousel" id="TestDeck" data-interval="false">
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-md-6 offset-3 mt-5 mb-5 align-item-center">
+
+                @for (int i = 0; i < Model.CurrentStack.Count(); i++)
+                {
+                    var flashcard = Model.CurrentStack[i];
+                    var itemClass = i == 0 ? "carousel-item active" : "carousel-item";
+                    <div class="@itemClass">
+                        <partial name="_PracticeFlashcard" model="flashcard" />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev bg-dark" href="#TestDeck" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next bg-dark" href="#TestDeck" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+

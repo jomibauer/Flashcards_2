@@ -1,0 +1,9 @@
+@model FlashcardsViewModel
+
+<h2>Card added successfully</h2>
+<p>
+    <a asp-controller="Home" asp-action="FolderDetails" asp-route-Id="@Model.FlashcardFolderId">Go back to my folder</a>
+    or
+    <a asp-controller="Flashcard" asp-action="AddCard" asp-route-flashcardFolderId="@Model.FlashcardFolderId">add another card?</a>
+
+</p>

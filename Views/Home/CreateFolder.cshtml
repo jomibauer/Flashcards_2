@@ -1,0 +1,18 @@
+@model FlashcardFolderInfoViewModel
+
+
+<div class="align-items-center w-25">
+    <p class="fade-out bg-danger rounded pr-3 pl-3 text-center text-white">@ViewBag.ErrorMessage</p>
+</div>
+
+<form asp-action="CreateFolder" method="Post" class="form-horizontal" role="form">
+
+    <partial name="_FolderUpdate" model="Model" />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Create Folder" />
+        </div>
+    </div>
+    </div>
+</form>

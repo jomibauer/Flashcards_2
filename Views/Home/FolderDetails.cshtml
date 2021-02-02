@@ -1,0 +1,46 @@
+@model FlashcardFolderInfoViewModel
+    <div class="align-items-center w-25">
+        <p class="fade-out bg-success rounded pr-3 pl-3 text-center text-white">@ViewBag.UserMessage</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card w-100">
+                <div class="card-body">
+                    <h4 class="card-title">@Model.Name</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.Subject</h6>
+                    <p class="card-text">
+                        @Model.Description
+                    </p>
+                    <a asp-controller="Home"
+                       asp-action="EditFolder"
+                       asp-route-Id="@Model.FlashcardFolderId"
+                       class="card-link text-right" style="font-size:75%;">Edit Folder Info</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row m-2 w-100" style="height:125px;">
+                <a asp-controller="Flashcard"
+                   asp-action="Practice"
+                   asp-route-flashcardFolderId="@Model.FlashcardFolderId"
+                   class="btn btn-success w-100 h-100 text-center"
+                   style="font-size: 250%; line-height: 110px; "
+                   value="Practice">Practice!</a>
+            </div>
+            <div class="row m-2 w-100">
+                <a asp-controller="Flashcard"
+                   asp-action="ViewCards"
+                   asp-route-flashcardFolderId="@Model.FlashcardFolderId"
+                   class="btn btn-info w-100 h-100"
+                   value="View/Edit Cards">View/Edit Cards</a>
+            </div>
+            <div class="row m-2 w-100">
+                <a asp-controller="Flashcard"
+                   asp-action="AddCard"
+                   asp-route-flashcardFolderId="@Model.FlashcardFolderId"
+                   class="btn btn-info  w-100 h-100"
+                   value="Add New Card">Add New Card</a>
+            </div>
+
+        </div>
+    </div>

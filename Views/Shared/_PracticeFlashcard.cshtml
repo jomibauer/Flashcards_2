@@ -1,0 +1,16 @@
+@model Flashcard
+
+<div class="practice-flashcard">
+    <div class="practice-front">
+        <p class="practice-flashcard-text">
+            @Model.FrontText
+        </p>
+        <span class="sr-only">@Model.FrontText</span>
+    </div>
+    <div class="practice-back">
+        <p class="practice-flashcard-text">
+            @Model.BackText
+        </p>
+        <span class="sr-only">@Model.BackText</span>
+    </div>
+</div>

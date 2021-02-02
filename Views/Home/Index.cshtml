@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model FlashcardFoldersViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@inject SignInManager<ApplicationUser> SignInManager
+
+<div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h1 class="display-4">Welcome, @ViewBag.UserData</h1>
+    }
+    else
+    {
+        <h1 class="display-4">Please login</h1>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-4 scrolling-list-wrapper border-primary">
+        <ul class="scrolling-list">
+            @if (Model.FlashcardFolders[0] != null && Model.FlashcardFolders.Count != 0 ) { 
+                @foreach (var folder in Model.FlashcardFolders)
+                {
+                    <li class="mb-1">
+                        <partial name="_FolderCard" model="folder" />
+                    </li>
+                }
+			}
+			else
+			{
+                <li class="mb-1">
+                    <div class="card w-10">
+                        <div class="card-body">
+                            <h4 class="card-title">You don't have any folders!</h4>
+                            <p class="card-text">
+                                Create a new folder to get started.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+			}
+        </ul>
+    </div>
+
+    <div class="col-md-5 d-flex align-items-center justify-content-center" style="height:125px;">
+        
+        <a class="btn btn-outline-primary w-100 h-100"
+           style="line-height:110px; font-size:150%;"
+           asp-controller="Home"
+           asp-action="InitNewFolder">
+            <i class="fas fa-plus"></i> Create New Folder
+        </a>
+       
+        
+    </div>
+
+</div>
+
+

@@ -1,0 +1,30 @@
+@model Flashcard
+
+<div class="card-group">
+    <div class="card">
+        <div class="card-title">
+            <p class="text-muted">Front</p>
+        </div>
+        <div class="card-title d-flex align-items-center">
+            <h6 class="p-0 m-0 text-center">@Model.FrontText</h6>
+        </div>
+        
+        <a asp-controller="Flashcard"
+           asp-action="EditCard"
+           asp-route-flashcardId="@Model.Id"
+           class="card-link text-left ml-1" style="font-size: 50%">Edit Card</a>
+    </div>
+    <div class="card">
+        <div class="card-title">
+            <p class="text-muted">Back</p>
+        </div>
+        <div class="card-title d-flex align-items-center">
+            <h6 class="p-0 m-0 text-center">@Model.BackText</h6>
+        </div>
+
+        <a asp-controller="Flashcard"
+           asp-action="DeleteCard"
+           asp-route-flashcardId="@Model.Id"
+           class="card-link text-right text-danger mr-1" style="font-size: 50%">Delete Card</a>
+    </div>
+</div>
